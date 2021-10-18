@@ -1,0 +1,2 @@
+/* Used for hiding pre-initialized DOM. Attribute is removed from elements when Alpine initializes. */
+[x-cloak] { display: none; }
