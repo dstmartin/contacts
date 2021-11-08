@@ -7,13 +7,13 @@
         <title>TAMUC - Contacts</title>
 
         <!-- Styles -->
-        
         <link href="css/app.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
 
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/e796ab1377.js" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/alpinejs" defer></script>
+		<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
         
     </head>
 
@@ -88,7 +88,9 @@
 	
 			<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<!-- Content Area -->
-				<div id="contacts"></div>
+				<ul id="contacts" role="list" class="relative z-0 divide-y divide-gray-200"></ul>
+
+				
 
 				<div class="inset-0 overflow-hidden">
 	
@@ -142,6 +144,46 @@
 															class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
 													</div>
 												</div>
+												<div class="space-y-1">
+													<label for="home-phone"
+														class="block text-sm font-semibold leading-5 text-gray-900">
+														Home Phone
+													</label>
+													<div class="relative rounded-md shadow-sm">
+														<input type="text" id="home-phone"
+															class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+													</div>
+												</div>
+												<div class="space-y-1">
+													<label for="cell-phone"
+														class="block text-sm font-semibold leading-5 text-gray-900">
+														Cell Phone
+													</label>
+													<div class="relative rounded-md shadow-sm">
+														<input type="text" id="cell-phone"
+															class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+													</div>
+												</div>
+												<div class="space-y-1">
+													<label for="work-phone"
+														class="block text-sm font-semibold leading-5 text-gray-900">
+														Work Phone
+													</label>
+													<div class="relative rounded-md shadow-sm">
+														<input type="text" id="work-phone"
+															class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+													</div>
+												</div>
+												<div class="space-y-1">
+													<label for="email"
+														class="block text-sm font-semibold leading-5 text-gray-900">
+														Email
+													</label>
+													<div class="relative rounded-md shadow-sm">
+														<input type="text" id="email"
+															class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -170,6 +212,7 @@
 		<script type="module">
 			import { openDB, deleteDB } from 'https://unpkg.com/idb?module'
 		</script>
-		<script src="js/db.js?v=0001"></script>
+		<script src="js/dexie.js?v=0007"></script>
+
 	</body>
 </html>
