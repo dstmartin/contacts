@@ -3,15 +3,15 @@
 const staticCacheName = 'site-static-v1';
 const dynamicCacheName = 'site-dynamic-v1';
 const assets = [
-  '/',
-  '/index.html',
-  '/edit.html',
-  '/show.html',
-  '/js/app.js',
-  '/js/edit.js',
-  '/js/show.js',
-  '/js/dexie.js',
-  '/css/styles.css'
+  '../',
+  'index.html',
+  'edit.html',
+  'show.html',
+  'js/app.js',
+  'js/edit.js',
+  'js/show.js',
+  'js/dexie.js',
+  'css/styles.css'
 ];
 
 // cache size limit function
