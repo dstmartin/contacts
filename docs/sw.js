@@ -1,15 +1,15 @@
 const staticCacheName = 'site-static-v1';
 const dynamicCacheName = 'site-dynamic-v1';
 const assets = [
-  '/contacts/',
-  '/contacts/index.html',
-  '/contacts/edit.html',
-  '/contacts/show.html',
-  '/contacts/js/app.js',
-  '/contacts/js/edit.js',
-  '/contacts/js/show.js',
-  '/contacts/js/dexie.js',
-  '/contacts/css/styles.css'
+//   '/contacts/',
+//   '/contacts/index.html',
+//   '/contacts/edit.html',
+//   '/contacts/show.html',
+//   '/contacts/js/app.js',
+//   '/contacts/js/edit.js',
+//   '/contacts/js/show.js',
+//   '/contacts/js/dexie.js',
+//   '/contacts/css/styles.css'
 ];
 
 // cache size limit function
