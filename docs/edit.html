@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMUC - Contacts</title>
+
+    <!-- Styles -->
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/e796ab1377.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+
+</head>
+
+<body>
+    <nav x-data="{ open:false }" class="bg-gray-800 sticky top-0 z-10" x-cloak>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 text-3xl text-blue-50">
+                        <span class="sr-only">Contacts</span>
+                        <span><i class="fas fa-at" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-bold"
+                                aria-current="page">Contacts</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <!-- Mobile menu button -->
+                    <button @click="open = !open" type="button"
+                        class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg x-state:on="Menu open" x-state:off="Menu closed" class="h-6 w-6 hidden"
+                            :class="{ 'hidden': open, 'block': !(open) }" x-description="Heroicon name: outline/menu"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg x-state:on="Menu open" x-state:off="Menu closed" class="h-6 w-6 block"
+                            :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/x"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div x-show="open" class="md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-bold"
+                    aria-current="page">Contacts</a>
+            </div>
+        </div>
+    </nav>
+
+    <main x-data="">
+        <div class="bg-white border-b border-gray-400">
+            <div class="flex max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 justify-between">
+                <div class="flex items-center">
+                    <h1 class="text-xl leading-6 font-semibold text-gray-900">
+                        Edit Contact
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <!-- Content Area -->
+            <div class="divide-y divide-gray-200 flex flex-col">
+                <div class="flex-1 h-0 overflow-y-auto">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div class="px-4 divide-y divide-gray-200 sm:px-6">
+                            <div class="space-y-6 pt-6 pb-5">
+                                <div class="space-y-1">
+                                    <label for="first-name"
+                                        class="block text-sm font-semibold leading-5 text-gray-900">
+                                        First Name <span class="text-red-500">*</span>
+                                    </label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <input type="text" id="first-name" required
+                                            class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label for="last-name"
+                                        class="block text-sm font-semibold leading-5 text-gray-900">
+                                        Last Name <span class="text-red-500">*</span>
+                                    </label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <input type="text" id="last-name" required
+                                            class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label for="home-phone"
+                                        class="block text-sm font-semibold leading-5 text-gray-900">
+                                        Home Phone
+                                    </label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <input type="text" id="home-phone"
+                                            class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label for="cell-phone"
+                                        class="block text-sm font-semibold leading-5 text-gray-900">
+                                        Cell Phone
+                                    </label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <input type="text" id="cell-phone"
+                                            class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label for="work-phone"
+                                        class="block text-sm font-semibold leading-5 text-gray-900">
+                                        Work Phone
+                                    </label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <input type="text" id="work-phone"
+                                            class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label for="email"
+                                        class="block text-sm font-semibold leading-5 text-gray-900">
+                                        Email
+                                    </label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <input type="text" id="email"
+                                            class="form-input block w-full sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 px-4 py-4 space-x-4 flex justify-end">
+                    <span class="inline-flex rounded-md shadow-sm">
+                        <button @click="open = false;" type="button"
+                            class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-semibold text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                            Cancel
+                        </button>
+                    </span>
+                    <span class="inline-flex rounded-md shadow-sm">
+                        <button @click="submitContact();" type="submit"
+                            class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-semibold rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:ring-green active:bg-green-700 transition duration-150 ease-in-out">
+                            Save
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            
+        </div>
+    </main>
+
+    <script src="js/edit.js?v=0014"></script>
+
+</body>
+
+</html>

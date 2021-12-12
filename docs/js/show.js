@@ -36,6 +36,11 @@ function getContactByID(id) {
             document.getElementById('email').innerHTML = contact.email;
         
         document.getElementById('date-added').innerHTML = formattedDate;
+
+        var editBtn = document.getElementById("edit-contact");
+        var att = document.createAttribute("href");
+        att.value = 'edit.html?id=' + contact.ID;
+        editBtn.setAttributeNode(att);
     });
 }
 
