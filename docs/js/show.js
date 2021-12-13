@@ -44,6 +44,16 @@ function getContactByID(id) {
     });
 }
 
+function deleteContact() {
+    key = parseInt(getID);
+    db.contacts.delete(key).then(function () {
+        console.log("Contact deleted");
+        window.location.replace("index.html");
+    }).catch(function (error) {
+        console.error("Error: " + error);
+    });
+}
+
 if (getID)
     getContactByID(getID);
 else
