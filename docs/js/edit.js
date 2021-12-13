@@ -38,6 +38,11 @@ function getContactByID(id) {
 
         if (contact.email)
             document.getElementById('email').value = contact.email;
+
+        var editBtn = document.getElementById("cancel-btn");
+        var att = document.createAttribute("href");
+        att.value = 'show.html?id=' + contact.ID;
+        editBtn.setAttributeNode(att);
     });
 }
 
